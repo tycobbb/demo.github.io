@@ -1,0 +1,110 @@
+<html>
+
+<head>
+  <style>
+    body {
+      margin: 75;
+      font-family: sans-serif;
+    }
+
+    p {
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul[class] {
+      list-style: none;
+    }
+
+    .Nav-title {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      font-size: 21px;
+      margin-bottom: 8px;
+    }
+
+    .Nav-title::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      right: -5px;
+      height: 4px;
+      background-color: lightgray;
+      z-index: -1;
+    }
+
+    .Nav-items {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .Nav-item {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding-top: 4px;
+      padding-bottom: 4px;
+      font-size: 16px;
+      color: black;
+      text-decoration: none;
+    }
+
+    .Nav-item::before {
+      content: "";
+      position: absolute;
+      left: -5px;
+      right: -5px;
+      height: 4px;
+      background-color: none;
+      z-index: -1;
+    }
+
+    .Nav-item:hover::before {
+      background-color: #FFE3BF;
+    }
+
+    .Nav-item.is-selected::before {
+      background-color: #CBC4FF;
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="Nav">
+    <p>
+      <span class="Nav-title">games</span>
+    </p>
+    <ul class="Nav-items">
+      <li><a href="#obnmcgsladp" class="Nav-item">o.b.n.m.c.g.s.l.a.d.p.</a></li>
+      <li><a href="#insomnia" class="Nav-item">insomnia</a></li>
+      <li><a href="#cat-stickers" class="Nav-item">cat stickers</a></li>
+      <li><a href="#hopefully" class="Nav-item">hopefully</a></li>
+      <li><a href="#more-games" class="Nav-item">more games</a></li>
+      <li><a href="#one-day" class="Nav-item">one day</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    function SelectLink() {
+      // get hash from url
+      const hash = document.location.hash
+
+      // mark the correct link as selected (and deselect the rest)
+      const links = document.querySelectorAll(".Nav-item")
+      for (const link of links) {
+        const url = new URL(link.href)
+        link.classList.toggle("is-selected", url.hash == hash)
+      }
+    }
+
+    SelectLink()
+    window.onhashchange = SelectLink
+  </script>
+</body>
+
+</html>
